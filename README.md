@@ -26,6 +26,17 @@ reproduces the bug **before** the fix, so the suite proves the fix does somethin
   `json.loads("123")` returns an int without raising, which would turn a body into a number.
 - [#6689](https://github.com/keephq/keep/pull/6689) — expose an instant PromQL query as a provider method.
 
+**[cachix/secretspec](https://github.com/cachix/secretspec)** — declarative secrets manager, Rust (1.3k ★)
+
+- [#352](https://github.com/cachix/secretspec/pull/352) — `Resolved.close()` deletes the temp files
+  holding `as_path` secrets. In the Python and Ruby SDKs the first file the OS refused to remove
+  aborted the loop, so **every later secret stayed on disk** — the one outcome the method exists to
+  prevent — and the caller couldn't tell which. The Go and .NET SDKs already recorded the first error
+  and cleaned up the rest, so this was the project's own contract, unimplemented in two of six SDKs.
+  Ruby also silently skipped dangling symlinks: `File.exist?` follows links, so a broken one read as
+  already-gone. Verified against both real compiled extensions — pyo3 via maturin, and the Ruby
+  native extension.
+
 **[tenstorrent](https://github.com/tenstorrent)** — AI accelerator hardware stack
 
 - [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) — install `rustup` from the
