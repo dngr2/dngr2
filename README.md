@@ -42,14 +42,14 @@ under the remote bar indefinitely.
 
 | Language | Where |
 |---|---|
-| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) |
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) |
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
-| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) |
+| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
-| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** |
+| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
-| Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** |
+| Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
 | PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) |
 | JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) |
 | SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
@@ -118,7 +118,35 @@ parser, so the mark stayed inside the first field of the first row, where nothin
 separately. Both existing BOM tests pass a string, and the repo's own `utf-8-bom-sample.csv` is
 only ever read *into* a string — the streaming path had no BOM coverage at all.
 
-Also: [keep #6687](https://github.com/keephq/keep/pull/6687) (results returned twice),
+[**webauthn4j/webauthn4j #1495**](https://github.com/webauthn4j/webauthn4j/pull/1495) — the
+CTAP2 canonical CBOR serializer listed an RSA COSE key's fields negatives-first and descending, so
+a public key `{1:kty, 3:alg, -1:n, -2:e}` serialized with its keys ordered `-2, -1, 1, 3` instead of
+the canonical `1, 3, -1, -2`. Canonical CBOR orders map keys by their encoded bytes — positive labels
+before negative — and the sibling EC2 and EdDSA serializers already do, which is what proves the RSA
+list is a mistake and not a convention. The output isn't canonical, so anything that re-encodes or
+thumbprints the key diverges — in a WebAuthn/FIDO library. Built the 585★ project and asserted the
+serialized map starts with `kty`; it started with a negative label.
+
+[**dryruby/json-canonicalization #7**](https://github.com/dryruby/json-canonicalization/pull/7) —
+numbers were formatted with `"%.15E"`, which yields 16 significant digits, but an IEEE-754 double
+needs 17 to round-trip. So `0.1 + 0.2` canonicalized to `"0.3"` — a string that parses back to a
+*different* double, in a scheme whose entire purpose is that two parties hash identical bytes. The
+maintainer had commented the failing cases out as "Outside Ruby Range"; they weren't — `5e-324` and
+`Float::MAX` are perfectly representable, they just needed the 17th digit. 9,152 of 20,000 random
+doubles came out wrong; the fix takes it to zero.
+
+Also: [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) (canonical map keys sorted with
+Java's *signed* byte, so a key byte `0xff` sorted before `0x01` — the reverse of the byte order its
+own Javadoc specifies; 326 tests all used ASCII keys under `0x80` and never hit the sign boundary),
+[didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) (a DIF `did:webvh`
+implementation hashed DID-log entries through a non-RFC-8785 canonicalizer that turned integers
+`≥ 2^63` into JSON *strings*, so its SCIDs disagreed with any conformant verifier),
+[nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) (a Go JCS encoder stripped
+the `+` from positive exponents and kept the padded zero in negatives — `1e21`→`"1e21"`,
+`1e-7`→`"1e-07"` — breaking its own documented byte-equivalence to Rust `serde_jcs`),
+[jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) (same 16-digit float bug, in Python;
+their own test already expected the correct output, so the suite shipped red),
+[keep #6687](https://github.com/keephq/keep/pull/6687) (results returned twice),
 [#6688](https://github.com/keephq/keep/pull/6688) (`json.loads("123")` returns an int
 without raising, so only dict/list parses are accepted),
 [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) (hugepage
