@@ -19,11 +19,26 @@ Pull requests into projects I don't maintain. Same rule in each: a test that
 reproduces the defect **before** the fix, so the suite proves the fix does something.
 Every one below fails against the unpatched code.
 
-**Merged:** [cachix/secretspec #358](https://github.com/cachix/secretspec/pull/358) — a JSON `null`
-in a secret reference became the four-character password `null`, satisfying a required secret. The
+### Merged
+
+[**cachix/secretspec #358**](https://github.com/cachix/secretspec/pull/358) — a JSON `null` in a
+secret reference became the four-character password `null`, satisfying a required secret. The
 maintainer asked for the three copies of that rendering to be shared; doing so surfaced the same
 defect in a third call site, and the existing suite then caught me flattening a difference between
 them that was deliberate and tested. Merged 119 minutes after opening.
+
+[**cachix/secretspec #352**](https://github.com/cachix/secretspec/pull/352) — `close()` deletes the
+temp files holding `as_path` secrets. Python and Ruby stopped at the first file the OS refused,
+stranding every later secret on disk. Go and .NET already recorded the error and cleaned up the
+rest — the project's own contract, unimplemented in two of six SDKs.
+
+[**bsorescu/herdr-mobile #1**](https://github.com/bsorescu/herdr-mobile/pull/1) and
+[**#2**](https://github.com/bsorescu/herdr-mobile/pull/2) — a redraw skipped when it would be
+identical, and the polling SSH calls moved off the event loop. Both came back with changes
+requested, and the review was the useful part: the maintainer showed that two of my tests passed
+with *and* without their fix, which is the one thing a regression test must never do. Fixed, plus
+a third bug the re-check turned up — the skip path never re-pinned the log, so the last rows sat
+under the remote bar indefinitely.
 
 | Language | Where |
 |---|---|
@@ -32,10 +47,12 @@ them that was deliberate and tested. Merged 119 minutes after opening.
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
 | Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
-| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) |
+| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
-| Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) |
-| SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) — Postgres escape strings, across 34 dialects |
+| Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** |
+| PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) |
+| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) |
+| SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
@@ -85,6 +102,22 @@ back as a path containing a tab and a newline. A maintainer had closed the previ
 this as intractable; the escape set is finite and documented, so decoding it removes all three.
 Values verified against DuckDB over 175 escape sequences ([writeup](https://github.com/tobymao/sqlglot/issues/8191)).
 
+[**phpseclib/phpseclib #2165**](https://github.com/phpseclib/phpseclib/pull/2165) — `divide()`
+returns the "common residue", the first positive modulo, so only a *negative* remainder has the
+divisor added. When the division is exact the remainder is already zero, and the pure-PHP engines
+added the divisor anyway: `-256 / 256` came back with a remainder of **256**, a residue equal to
+its own modulus. GMP and BCMath return 0, so the answer depended on which extension happened to be
+installed — and the PHP engines are the fallback when neither is, in a cryptography library. Found
+by running 1278 operations through all three engines and diffing; 32 disagreed, and the documented
+rule sided with BCMath in all 32. Their `testDivide` only ever divides a *positive* number exactly.
+
+[**mholt/PapaParse #1142**](https://github.com/mholt/PapaParse/pull/1142) — the UTF-8 BOM was
+stripped for string input only. A `File`, a download or a Node stream went straight to the chunk
+parser, so the mark stayed inside the first field of the first row, where nothing renders it and
+`row[0] === 'name'` is simply false. `header: true` hid it, because the header is stripped
+separately. Both existing BOM tests pass a string, and the repo's own `utf-8-bom-sample.csv` is
+only ever read *into* a string — the streaming path had no BOM coverage at all.
+
 Also: [keep #6687](https://github.com/keephq/keep/pull/6687) (results returned twice),
 [#6688](https://github.com/keephq/keep/pull/6688) (`json.loads("123")` returns an int
 without raising, so only dict/list parses are accepted),
@@ -94,6 +127,9 @@ setup replaced the allocation instead of extending it),
 never drove `TKEEP`, so a consumer read zero valid bytes in every frame),
 [secretspec #358](https://github.com/cachix/secretspec/pull/358) (a JSON `null` became
 the four-character password `null`),
+[sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) (`keyword_case` recased the
+contents of a time zone literal, because the `AT TIME ZONE 'Asia/Tokyo'` rule matched the literal
+as part of the keyword; the existing test used `'UTC'`, which reads the same either way),
 [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) (a UTF-8 BOM was
 stripped only on the first buffer fill, so a file whose BOM straddled the boundary kept
 it inside the first field — the tests for it passed with **and** without the fix, because
@@ -177,10 +213,12 @@ mailbox.
 
 ---
 
-**Python · Rust · Go · TypeScript · Java · C++ · Ruby · C# / .NET · Bash · SystemVerilog**
+**Python · Rust · Go · TypeScript · JavaScript · Java · C++ · C# / .NET · PHP · Ruby · SQL · Bash · SystemVerilog**
 
 **FastAPI · SQLAlchemy · Selenium · Linux · PostgreSQL · Docker · Maven · Cargo · CMake**
 
-Available for Python and C# work — automation, backend services, dashboards,
-scraping and monitoring.
+Available for backend and systems work — automation, services, data plumbing,
+scraping and monitoring. Most at home in Python, but the table above is the
+honest answer to "can you work in X": each row is a defect found and fixed in
+someone else's codebase, not a line on a skills list.
 Send me a URL and I'll tell you whether it's extractable before you commit to anything.
