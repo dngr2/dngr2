@@ -12,59 +12,64 @@ no signup, and no network.
 
 ---
 
+
 ### Contributing upstream
 
 Open pull requests into projects I don't maintain. Same rule in each: a test that
-reproduces the bug **before** the fix, so the suite proves the fix does something.
+reproduces the defect **before** the fix, so the suite proves the fix does something.
+Every one below fails against the unpatched code.
 
-**[keephq/keep](https://github.com/keephq/keep)** — open-source AIOps and alert management (12.2k ★)
+| Language | Where |
+|---|---|
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) |
+| C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
+| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) |
+| TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
+| Python | [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) |
+| Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) |
+| SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
+| Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
-- [#6687](https://github.com/keephq/keep/pull/6687) — the HTTP provider returned every result twice.
-  `BaseProvider.notify()` already appends the result, and calling `query()` appended it again.
-- [#6688](https://github.com/keephq/keep/pull/6688) — a templated JSON body arrived as a string and got
-  form-encoded. Parsing it is the fix, but only a `dict`/`list` parse is accepted:
-  `json.loads("123")` returns an int without raising, which would turn a body into a number.
-- [#6689](https://github.com/keephq/keep/pull/6689) — expose an instant PromQL query as a provider method.
+**The ones worth reading:**
 
-**[cachix/secretspec](https://github.com/cachix/secretspec)** — declarative secrets manager, Rust (1.3k ★)
+[**json-schema-validator #1273**](https://github.com/networknt/json-schema-validator/pull/1273) — `uniqueItems`
+compared items through Jackson node equality, which is type-sensitive, so `[1, 1.0]`
+validated. The spec compares numbers mathematically. The official conformance suite
+covers this rule with `[1.0, 1.0, 1]` — which **passes either way**, because the two
+identical decimals are caught before an integer is ever compared against a decimal.
+8,479 green tests, and the rule was still broken.
 
-- [#352](https://github.com/cachix/secretspec/pull/352) — `Resolved.close()` deletes the temp files
-  holding `as_path` secrets. In the Python and Ruby SDKs the first file the OS refused to remove
-  aborted the loop, so **every later secret stayed on disk** — the one outcome the method exists to
-  prevent — and the caller couldn't tell which. The Go and .NET SDKs already recorded the first error
-  and cleaned up the rest, so this was the project's own contract, unimplemented in two of six SDKs.
-  Ruby also silently skipped dangling symlinks: `File.exist?` follows links, so a broken one read as
-  already-gone. Verified against both real compiled extensions — pyo3 via maturin, and the Ruby
-  native extension.
+[**pulp-platform/axi_stream #9**](https://github.com/pulp-platform/axi_stream/pull/9) — a
+64→8 AXI-Stream downsizer's fast path consumed a beat carrying `TLAST` but never
+padded, so a frame one beat past a word boundary was silently truncated and its
+remainder left merged into the next frame. Only lengths ≡1 (mod 8) reach it, and only
+with `TVALID` held high — a sweep of every length found it, a single test case would not.
 
-**[tenstorrent](https://github.com/tenstorrent)** — AI accelerator hardware stack
+[**cachix/secretspec #352**](https://github.com/cachix/secretspec/pull/352) — `close()`
+deletes the temp files holding `as_path` secrets. Python and Ruby stopped at the first
+file the OS refused, stranding every later secret on disk. Go and .NET already recorded
+the error and cleaned up the rest — the project's own contract, unimplemented in two of
+six SDKs.
 
-- [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) — install `rustup` from the
-  distro repos where it's packaged rather than curl-piping the upstream script. Version comparison via
-  `sort -V`, with the tests written to fail if the comparison is inverted.
-- [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) — implement `tt-flash verify`.
-- [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) — hugepage setup
-  *replaced* the existing allocation instead of adding to it, silently shrinking memory on a
-  second run. Fixed with a marker file so the baseline survives a re-run.
+[**tenstorrent/tt-npe #131**](https://github.com/tenstorrent/tt-npe/pull/131) — an empty
+golden-cycle map left a `{Cycle::max(), 0}` sentinel that underflowed to `1` on
+subtraction. Worse than a zero: `1` passes the `> 0` guard written to suppress exactly
+that case, so a 100-cycle estimate was reported as 9900% error.
 
-**[bsorescu/herdr-mobile](https://github.com/bsorescu/herdr-mobile)** — phone-friendly Textual TUI for
-driving coding agents over SSH
+[**keephq/keep #6698**](https://github.com/keephq/keep/pull/6698) — a CEL filter was
+translated to JavaScript with `replace(/contains/g, "includes")`, rewriting the inside
+of quoted search strings. `description.contains("contains")` searched for *"includes"*,
+and a field named `contains_pii` became one that doesn't exist.
 
-Two performance PRs, both led by measurement rather than by reading:
-
-- [#1](https://github.com/bsorescu/herdr-mobile/pull/1) — the poll cleared and rewrote all 200 rows
-  every 2s even when the agent's output was byte-identical: **20.35ms → 0.24ms**. The cache key has to
-  be `(content, width)`, not content alone — there is no `on_resize` handler, so a rotate is only
-  picked up *because* the next poll re-renders, and keying on content would have broken it silently.
-- [#2](https://github.com/bsorescu/herdr-mobile/pull/2) — every CLI call was a
-  `subprocess.run(timeout=10)` on Textual's event loop. Measured with a 10ms heartbeat, a 300ms call
-  stalled the UI for **310ms**; a hung CLI would freeze it for the full 10s. Split each poll into a
-  pure renderer and a `@work(thread=True, exclusive=True)` fetcher — **12ms worst case, and not one of
-  the project's 174 existing tests had to change.**
-
-I benchmarked the text pipeline first and left it alone: 430 `strip_ansi` calls looked like the
-bottleneck and cost 1.98ms. The rewrite was ~90% of the time. Optimising the obvious thing would have
-been effort spent on a non-problem.
+Also: [keep #6687](https://github.com/keephq/keep/pull/6687) (results returned twice),
+[#6688](https://github.com/keephq/keep/pull/6688) (`json.loads("123")` returns an int
+without raising, so only dict/list parses are accepted),
+[tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) (hugepage
+setup replaced the allocation instead of extending it),
+[pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) (receive path
+never drove `TKEEP`, so a consumer read zero valid bytes in every frame),
+[secretspec #358](https://github.com/cachix/secretspec/pull/358) (a JSON `null` became
+the four-character password `null`).
 
 ---
 
@@ -144,7 +149,9 @@ mailbox.
 
 ---
 
-**Python · C# / .NET · Bash · Selenium · FastAPI · SQLAlchemy · Linux · PostgreSQL · Docker**
+**Python · Rust · TypeScript · Java · C++ · Ruby · C# / .NET · Bash · SystemVerilog**
+
+**FastAPI · SQLAlchemy · Selenium · Linux · PostgreSQL · Docker · Maven · Cargo · CMake**
 
 Available for Python and C# work — automation, backend services, dashboards,
 scraping and monitoring.
