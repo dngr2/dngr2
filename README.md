@@ -15,15 +15,22 @@ no signup, and no network.
 
 ### Contributing upstream
 
-Open pull requests into projects I don't maintain. Same rule in each: a test that
+Pull requests into projects I don't maintain. Same rule in each: a test that
 reproduces the defect **before** the fix, so the suite proves the fix does something.
 Every one below fails against the unpatched code.
+
+**Merged:** [cachix/secretspec #358](https://github.com/cachix/secretspec/pull/358) — a JSON `null`
+in a secret reference became the four-character password `null`, satisfying a required secret. The
+maintainer asked for the three copies of that rendering to be shared; doing so surfaced the same
+defect in a third call site, and the existing suite then caught me flattening a difference between
+them that was deliberate and tested. Merged 119 minutes after opening.
 
 | Language | Where |
 |---|---|
 | Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) |
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
-| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) |
+| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
+| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
 | Python | [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) |
@@ -44,6 +51,12 @@ identical decimals are caught before an integer is ever compared against a decim
 padded, so a frame one beat past a word boundary was silently truncated and its
 remainder left merged into the next frame. Only lengths ≡1 (mod 8) reach it, and only
 with `TVALID` held high — a sweep of every length found it, a single test case would not.
+
+[**hashicorp/go-retryablehttp #297**](https://github.com/hashicorp/go-retryablehttp/pull/297) —
+`Retry-After` seconds are converted with `time.Second * time.Duration(sleep)`. A `Duration` counts
+nanoseconds, so any value past ~292 years wraps negative, and `time.NewTimer` fires immediately on a
+negative duration. A server asking to be left alone was answered with a burst of retries. The guard
+for a negative value in the header already existed; a positive one that *becomes* negative did not.
 
 [**cachix/secretspec #352**](https://github.com/cachix/secretspec/pull/352) — `close()`
 deletes the temp files holding `as_path` secrets. Python and Ruby stopped at the first
@@ -149,7 +162,7 @@ mailbox.
 
 ---
 
-**Python · Rust · TypeScript · Java · C++ · Ruby · C# / .NET · Bash · SystemVerilog**
+**Python · Rust · Go · TypeScript · Java · C++ · Ruby · C# / .NET · Bash · SystemVerilog**
 
 **FastAPI · SQLAlchemy · Selenium · Linux · PostgreSQL · Docker · Maven · Cargo · CMake**
 
