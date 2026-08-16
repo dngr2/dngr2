@@ -32,8 +32,10 @@ them that was deliberate and tested. Merged 119 minutes after opening.
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
 | Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
-| Python | [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) |
+| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) |
+| C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) |
+| SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) — Postgres escape strings, across 34 dialects |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
@@ -74,6 +76,15 @@ translated to JavaScript with `replace(/contains/g, "includes")`, rewriting the 
 of quoted search strings. `description.contains("contains")` searched for *"includes"*,
 and a field named `contains_pii` became one that doesn't exist.
 
+[**tobymao/sqlglot #8192**](https://github.com/tobymao/sqlglot/pull/8192) — the tokenizer
+decoded only fixed two-character escapes, so Postgres' `e'\x41'` was carried as the four-character
+text `\x41` instead of `A`. Three consequences from one cause: the value changed silently on the
+way to eight dialects, the literal **vanished** for seventeen others (`SELECT E'hello'` generated
+`SELECT `), and a backslash was lost round-tripping Postgres to itself — `e'C:\\tmp\\new'` came
+back as a path containing a tab and a newline. A maintainer had closed the previous attempt at
+this as intractable; the escape set is finite and documented, so decoding it removes all three.
+Values verified against DuckDB over 175 escape sequences ([writeup](https://github.com/tobymao/sqlglot/issues/8191)).
+
 Also: [keep #6687](https://github.com/keephq/keep/pull/6687) (results returned twice),
 [#6688](https://github.com/keephq/keep/pull/6688) (`json.loads("123")` returns an int
 without raising, so only dict/list parses are accepted),
@@ -82,7 +93,11 @@ setup replaced the allocation instead of extending it),
 [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) (receive path
 never drove `TKEEP`, so a consumer read zero valid bytes in every frame),
 [secretspec #358](https://github.com/cachix/secretspec/pull/358) (a JSON `null` became
-the four-character password `null`).
+the four-character password `null`),
+[CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) (a UTF-8 BOM was
+stripped only on the first buffer fill, so a file whose BOM straddled the boundary kept
+it inside the first field — the tests for it passed with **and** without the fix, because
+xUnit's collection comparer does not surface a leading U+FEFF).
 
 ---
 
