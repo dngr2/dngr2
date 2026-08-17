@@ -45,23 +45,37 @@ comparator compared key bytes with Java's *signed* byte, so a byte `0xff` sorted
 the reverse of the byte order its own Javadoc specifies. Every canonical map with a high byte in a
 key came out non-canonical. Merged same day.
 
+[**c-rack/cbor-java #266**](https://github.com/c-rack/cbor-java/pull/266) — the decoder read a
+declared array/map/string length and preallocated a collection of that size *before* reading a
+single byte of payload. Five bytes — `9A 7F FF FF FF`, an array claiming 2,147,483,647 elements —
+were enough to `OutOfMemoryError` the process. A parser is exactly where untrusted input arrives,
+so the length has to be treated as a claim, not a promise; preallocation is now bounded by what the
+stream can actually supply. Merged.
+
 [**networknt/json-schema-validator #1273**](https://github.com/networknt/json-schema-validator/pull/1273)
 — `uniqueItems` compared items through Jackson node equality, which is type-sensitive, so `[1, 1.0]`
 validated. The official conformance suite covers the rule with `[1.0, 1.0, 1]`, which passes either
 way, so 8,479 green tests and the rule still broken. Merged.
 
+[**json-c/json-c #957**](https://github.com/json-c/json-c/pull/957) — strict mode rejected a
+leading zero but checked nothing else about a number's shape, so `2.e3` and `1.` parsed clean. And
+because json-c writes the token back out verbatim, it then *emitted* JSON that stricter parsers
+reject — a library quietly manufacturing invalid documents. The fix enforces the whole RFC 8259
+number grammar. Merged.
+
 | Language | Where |
 |---|---|
-| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) |
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [#266](https://github.com/c-rack/cbor-java/pull/266) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) |
+| C | [json-c #957](https://github.com/json-c/json-c/pull/957) **(merged)** |
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
-| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
-| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) |
+| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** · [#353](https://github.com/cachix/secretspec/pull/353) **(merged)** |
+| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) **(merged)** |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
 | Python | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
 | PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) |
-| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) |
+| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) · [awesome-dsh #1201](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1201) **(merged)** |
 | SQL | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
