@@ -40,30 +40,33 @@ with *and* without their fix, which is the one thing a regression test must neve
 a third bug the re-check turned up — the skip path never re-pinned the log, so the last rows sat
 under the remote bar indefinitely.
 
+[**c-rack/cbor-java #265**](https://github.com/c-rack/cbor-java/pull/265) — the canonical map-key
+comparator compared key bytes with Java's *signed* byte, so a byte `0xff` sorted before `0x01` —
+the reverse of the byte order its own Javadoc specifies. Every canonical map with a high byte in a
+key came out non-canonical. Merged same day.
+
+[**networknt/json-schema-validator #1273**](https://github.com/networknt/json-schema-validator/pull/1273)
+— `uniqueItems` compared items through Jackson node equality, which is type-sensitive, so `[1, 1.0]`
+validated. The official conformance suite covers the rule with `[1.0, 1.0, 1]`, which passes either
+way, so 8,479 green tests and the rule still broken. Merged.
+
 | Language | Where |
 |---|---|
-| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) |
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) |
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
-| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) |
+| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
-| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) |
+| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
 | PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) |
-| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) |
+| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) |
 | SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
 **The ones worth reading:**
-
-[**json-schema-validator #1273**](https://github.com/networknt/json-schema-validator/pull/1273) — `uniqueItems`
-compared items through Jackson node equality, which is type-sensitive, so `[1, 1.0]`
-validated. The spec compares numbers mathematically. The official conformance suite
-covers this rule with `[1.0, 1.0, 1]` — which **passes either way**, because the two
-identical decimals are caught before an integer is ever compared against a decimal.
-8,479 green tests, and the rule was still broken.
 
 [**pulp-platform/axi_stream #9**](https://github.com/pulp-platform/axi_stream/pull/9) — a
 64→8 AXI-Stream downsizer's fast path consumed a beat carrying `TLAST` but never
@@ -135,9 +138,21 @@ maintainer had commented the failing cases out as "Outside Ruby Range"; they wer
 `Float::MAX` are perfectly representable, they just needed the 17th digit. 9,152 of 20,000 random
 doubles came out wrong; the fix takes it to zero.
 
-Also: [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) (canonical map keys sorted with
-Java's *signed* byte, so a key byte `0xff` sorted before `0x01` — the reverse of the byte order its
-own Javadoc specifies; 326 tests all used ASCII keys under `0x80` and never hit the sign boundary),
+Also: [semver4j #467](https://github.com/semver4j/semver4j/pull/467) (`compareTo` threw
+`NumberFormatException` on a spec-valid numeric prerelease identifier past `Long.MAX_VALUE`),
+[gronx #71](https://github.com/adhocore/gronx/pull/71) (`0 0 31 * *` returned overflow dates — a
+February 31st as March 4th — that its own matcher then rejects),
+[luxon #1799](https://github.com/moment/luxon/pull/1799) (`fromISO` accepted out-of-range UTC
+offsets like `+00:60` and `+24:00` and silently normalised them, while rejecting the same
+out-of-range clock fields),
+[pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) and
+[node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) (both matched POSIX classes
+like `[[:digit:]]` against nothing, so Black / pre-commit / ESLint / Prettier disagreed with git on
+which files are ignored),
+[linebreak #53](https://github.com/foliojs/linebreak/pull/53) (missing Rule LB30's East Asian
+exception, so a line break before a wide bracket like `〈` or `（` was wrongly forbidden),
+[whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) (an opaque-path space before `?` or
+`#` was not percent-encoded as the current URL Standard requires),
 [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) (a DIF `did:webvh`
 implementation hashed DID-log entries through a non-RFC-8785 canonicalizer that turned integers
 `≥ 2^63` into JSON *strings*, so its SCIDs disagreed with any conformant verifier),
