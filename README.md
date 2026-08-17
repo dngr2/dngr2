@@ -70,7 +70,7 @@ number grammar. Merged.
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** · [#353](https://github.com/cachix/secretspec/pull/353) **(merged)** |
 | Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) **(merged)** · [#72](https://github.com/adhocore/gronx/pull/72) **(merged)** · [go-version #208](https://github.com/hashicorp/go-version/pull/208) |
-| TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
+| TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) **(merged)** |
 | Python | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
@@ -108,7 +108,7 @@ that case, so a 100-cycle estimate was reported as 9900% error.
 [**keephq/keep #6698**](https://github.com/keephq/keep/pull/6698) — a CEL filter was
 translated to JavaScript with `replace(/contains/g, "includes")`, rewriting the inside
 of quoted search strings. `description.contains("contains")` searched for *"includes"*,
-and a field named `contains_pii` became one that doesn't exist.
+and a field named `contains_pii` became one that doesn't exist. Merged.
 
 [**phpseclib/phpseclib #2165**](https://github.com/phpseclib/phpseclib/pull/2165) — `divide()`
 returns the "common residue", the first positive modulo, so only a *negative* remainder has the
