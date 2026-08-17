@@ -65,7 +65,7 @@ number grammar. Merged.
 
 | Language | Where |
 |---|---|
-| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [#266](https://github.com/c-rack/cbor-java/pull/266) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) |
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) **(merged)** · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [#266](https://github.com/c-rack/cbor-java/pull/266) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) |
 | C | [json-c #957](https://github.com/json-c/json-c/pull/957) **(merged)** |
 | C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) |
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** · [#353](https://github.com/cachix/secretspec/pull/353) **(merged)** |
@@ -133,7 +133,7 @@ the canonical `1, 3, -1, -2`. Canonical CBOR orders map keys by their encoded by
 before negative — and the sibling EC2 and EdDSA serializers already do, which is what proves the RSA
 list is a mistake and not a convention. The output isn't canonical, so anything that re-encodes or
 thumbprints the key diverges — in a WebAuthn/FIDO library. Built the 585★ project and asserted the
-serialized map starts with `kty`; it started with a negative label.
+serialized map starts with `kty`; it started with a negative label. Merged.
 
 [**dryruby/json-canonicalization #7**](https://github.com/dryruby/json-canonicalization/pull/7) —
 numbers were formatted with `"%.15E"`, which yields 16 significant digits, but an IEEE-754 double
