@@ -57,12 +57,12 @@ way, so 8,479 green tests and the rule still broken. Merged.
 | Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** |
 | Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) |
 | TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) |
-| Python | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) |
+| Python | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
 | PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) |
 | JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) |
-| SQL | [sqlglot #8192](https://github.com/tobymao/sqlglot/pull/8192) · [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
+| SQL | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
@@ -95,15 +95,6 @@ that case, so a 100-cycle estimate was reported as 9900% error.
 translated to JavaScript with `replace(/contains/g, "includes")`, rewriting the inside
 of quoted search strings. `description.contains("contains")` searched for *"includes"*,
 and a field named `contains_pii` became one that doesn't exist.
-
-[**tobymao/sqlglot #8192**](https://github.com/tobymao/sqlglot/pull/8192) — the tokenizer
-decoded only fixed two-character escapes, so Postgres' `e'\x41'` was carried as the four-character
-text `\x41` instead of `A`. Three consequences from one cause: the value changed silently on the
-way to eight dialects, the literal **vanished** for seventeen others (`SELECT E'hello'` generated
-`SELECT `), and a backslash was lost round-tripping Postgres to itself — `e'C:\\tmp\\new'` came
-back as a path containing a tab and a newline. A maintainer had closed the previous attempt at
-this as intractable; the escape set is finite and documented, so decoding it removes all three.
-Values verified against DuckDB over 175 escape sequences ([writeup](https://github.com/tobymao/sqlglot/issues/8191)).
 
 [**phpseclib/phpseclib #2165**](https://github.com/phpseclib/phpseclib/pull/2165) — `divide()`
 returns the "common residue", the first positive modulo, so only a *negative* remainder has the
