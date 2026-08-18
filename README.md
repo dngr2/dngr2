@@ -65,19 +65,19 @@ number grammar. Merged.
 
 | Language | Where |
 |---|---|
-| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) **(merged)** · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [#266](https://github.com/c-rack/cbor-java/pull/266) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) · [json-schema-validator #1274](https://github.com/networknt/json-schema-validator/pull/1274) · [#1275](https://github.com/networknt/json-schema-validator/pull/1275) · [JSqlParser #2487](https://github.com/JSQLParser/JSqlParser/pull/2487) |
-| C | [json-c #957](https://github.com/json-c/json-c/pull/957) **(merged)** · [tomlc17 #47](https://github.com/cktan/tomlc17/pull/47) |
-| C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) · [utfcpp #144](https://github.com/nemtrif/utfcpp/issues/144) **(reported)** · [cpp-httplib #2540](https://github.com/yhirose/cpp-httplib/pull/2540) **(merged)** · [toml11 #317](https://github.com/ToruNiina/toml11/pull/317) |
-| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** · [#353](https://github.com/cachix/secretspec/pull/353) **(merged)** |
-| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) **(merged)** · [#72](https://github.com/adhocore/gronx/pull/72) **(merged)** · [go-version #208](https://github.com/hashicorp/go-version/pull/208) · [pion/stun #286](https://github.com/pion/stun/pull/286) **(merged)** · [go-mysql #1184](https://github.com/go-mysql-org/go-mysql/pull/1184) |
-| TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) **(merged)** · [sql-formatter #964](https://github.com/sql-formatter-org/sql-formatter/pull/964) |
 | Python | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) · [keep #6687](https://github.com/keephq/keep/pull/6687) · [#6688](https://github.com/keephq/keep/pull/6688) · [#6689](https://github.com/keephq/keep/pull/6689) · [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [herdr-mobile #1](https://github.com/bsorescu/herdr-mobile/pull/1) **(merged)** · [#2](https://github.com/bsorescu/herdr-mobile/pull/2) **(merged)** · [didwebvh-py #41](https://github.com/decentralized-identity/didwebvh-py/pull/41) · [jsoncanon #1](https://github.com/sveinugu/jsoncanon/pull/1) · [pathspec #130](https://github.com/cpburnz/python-pathspec/pull/130) · [areos-open #4](https://github.com/bsorescu/areos-open/pull/4) **(merged)** · [PyMySQL #1262](https://github.com/PyMySQL/PyMySQL/pull/1262) **(merged)** |
+| Java | [json-schema-validator #1273](https://github.com/networknt/json-schema-validator/pull/1273) **(merged)** · [webauthn4j #1495](https://github.com/webauthn4j/webauthn4j/pull/1495) **(merged)** · [cbor-java #265](https://github.com/c-rack/cbor-java/pull/265) **(merged)** · [#266](https://github.com/c-rack/cbor-java/pull/266) **(merged)** · [semver4j #467](https://github.com/semver4j/semver4j/pull/467) · [json-schema-validator #1274](https://github.com/networknt/json-schema-validator/pull/1274) · [#1275](https://github.com/networknt/json-schema-validator/pull/1275) · [JSqlParser #2487](https://github.com/JSQLParser/JSqlParser/pull/2487) |
+| Go | [go-retryablehttp #297](https://github.com/hashicorp/go-retryablehttp/pull/297) · [nanorix-verify #1](https://github.com/nanorix-io/nanorix-verify/pull/1) · [whatwg-url #46](https://github.com/nlnwa/whatwg-url/pull/46) · [gronx #71](https://github.com/adhocore/gronx/pull/71) **(merged)** · [#72](https://github.com/adhocore/gronx/pull/72) **(merged)** · [go-version #208](https://github.com/hashicorp/go-version/pull/208) · [pion/stun #286](https://github.com/pion/stun/pull/286) **(merged)** · [go-mysql #1184](https://github.com/go-mysql-org/go-mysql/pull/1184) |
+| Rust | [secretspec #358](https://github.com/cachix/secretspec/pull/358) **(merged)** · [#353](https://github.com/cachix/secretspec/pull/353) **(merged)** |
+| C++ | [tt-npe #131](https://github.com/tenstorrent/tt-npe/pull/131) · [utfcpp #144](https://github.com/nemtrif/utfcpp/issues/144) **(reported)** · [cpp-httplib #2540](https://github.com/yhirose/cpp-httplib/pull/2540) **(merged)** · [toml11 #317](https://github.com/ToruNiina/toml11/pull/317) |
+| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) · [awesome-dsh #1201](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1201) **(merged)** · [#1277](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1277) **(merged)** · [fast-uri #212](https://github.com/fastify/fast-uri/pull/212) |
+| C | [json-c #957](https://github.com/json-c/json-c/pull/957) **(merged)** · [tomlc17 #47](https://github.com/cktan/tomlc17/pull/47) |
+| TypeScript | [keep #6698](https://github.com/keephq/keep/pull/6698) **(merged)** · [sql-formatter #964](https://github.com/sql-formatter-org/sql-formatter/pull/964) |
 | C# | [CsvHelper #2387](https://github.com/JoshClose/CsvHelper/pull/2387) · [Cronos #95](https://github.com/HangfireIO/Cronos/pull/95) · [Tomlyn #135](https://github.com/xoofx/Tomlyn/pull/135) **(merged)** |
 | Ruby | [secretspec #352](https://github.com/cachix/secretspec/pull/352) **(merged)** · [json-canonicalization #7](https://github.com/dryruby/json-canonicalization/pull/7) |
 | PHP | [phpseclib #2165](https://github.com/phpseclib/phpseclib/pull/2165) · [#2167](https://github.com/phpseclib/phpseclib/pull/2167) · [#2168](https://github.com/phpseclib/phpseclib/pull/2168) · [composer/semver #184](https://github.com/composer/semver/pull/184) · [league/csv #586](https://github.com/thephpleague/csv/issues/586) **(reported)** |
-| JavaScript | [PapaParse #1142](https://github.com/mholt/PapaParse/pull/1142) · [node-ignore #163](https://github.com/kaelzhang/node-ignore/pull/163) · [luxon #1799](https://github.com/moment/luxon/pull/1799) · [linebreak #53](https://github.com/foliojs/linebreak/pull/53) · [awesome-dsh #1201](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1201) **(merged)** · [#1277](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1277) **(merged)** · [fast-uri #212](https://github.com/fastify/fast-uri/pull/212) |
-| SQL | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | SystemVerilog | [axi_stream #8](https://github.com/pulp-platform/axi_stream/pull/8) · [#9](https://github.com/pulp-platform/axi_stream/pull/9) · [pulp-ethernet #6](https://github.com/pulp-platform/pulp-ethernet/pull/6) |
+| SQL | [sqlparse #876](https://github.com/andialbrecht/sqlparse/pull/876) |
 | Bash | [tt-installer #143](https://github.com/tenstorrent/tt-installer/pull/143) · [tt-system-tools #28](https://github.com/tenstorrent/tt-system-tools/pull/28) · [tt-flash #108](https://github.com/tenstorrent/tt-flash/pull/108) |
 
 **The ones worth reading:**
@@ -187,6 +187,17 @@ xUnit's collection comparer does not surface a leading U+FEFF).
 
 ### Repos
 
+### 🛡 [contract-security-notes](https://github.com/dngr2/contract-security-notes)
+Six ways a Solidity contract loses money while every line looks correct — vault
+inflation, reentrancy, missing access control, spot-price oracle manipulation,
+unchecked ERC20 returns, signature replay. Each is a vulnerable/fixed pair with a
+Foundry test that **carries out the exploit on-chain** and shows the fix stops it.
+The same idea as the rest of this work — the failure that doesn't revert — in Solidity.
+
+```bash
+forge test   # 12 tests: exploit + fix for each of the six findings
+```
+
 ### 🕸 [stealth-scrape](https://github.com/dngr2/stealth-scrape)
 Config-driven scraping for sites that don't want to be scraped. Adding a site is
 a YAML file, not code. The core idea: a block page returns `200 OK`, so every
@@ -196,6 +207,39 @@ Falls back to search-engine discovery when a site's own search is closed off.
 
 ```bash
 python -m stealth_scrape --site olx --query "rtx 3090" --out results.csv
+```
+
+### 🏢 [fastapi-multitenant](https://github.com/dngr2/fastapi-multitenant)
+Multi-tenant FastAPI + SQLAlchemy 2.0. Tenant isolation is enforced by a session-level
+ORM event rather than per query — an event can't be forgotten by whoever adds a query
+next year. The suite includes a mutation check: one test queries through an *unscoped*
+session and asserts both tenants' rows **are** visible, proving the isolation tests can
+actually fail. Migrations tested in both directions against a seeded database.
+
+### 👁 [pagewatch](https://github.com/dngr2/pagewatch)
+Alerts you won't mute. Every page differs on every fetch — timestamps, view
+counters, session tokens — so it watches a **CSS-targeted value**, normalises
+known noise, and never mistakes a WAF challenge for a change.
+
+```bash
+python -m pagewatch --demo   # baseline → noise (silent) → real change → blocked
+```
+
+### 🗡 [mu-server-architecture](https://github.com/dngr2/mu-server-architecture)
+MMO server architecture in C# / .NET 8. Login, Game World and Chat are separate
+assemblies — delete the World project and Chat still compiles. The demo shows the part
+that matters: the client asks to teleport to 9999,9999 and the server refuses and sends
+back the real position. Client-authoritative movement is the exploit most ready-made
+server packs ship with.
+
+### 🤖 [resilient-telegram-bot](https://github.com/dngr2/resilient-telegram-bot)
+A bot built around what happens when the API *doesn't* answer. Transient and
+permanent failures are separate types — a 502 retries, a 401 never does. Backoff
+uses full jitter so retries don't land as one synchronised stampede. Exhausting
+the retry budget logs and continues; only a permanent error exits.
+
+```bash
+python -m bot.main --demo    # no token — watch it recover from a flaky API
 ```
 
 ### 📦 [amazon-product-extraction](https://github.com/dngr2/amazon-product-extraction)
@@ -214,40 +258,6 @@ in front of one for an hour.
 pip install -r requirements.txt && uvicorn app.main:app
 ```
 
-### 🤖 [resilient-telegram-bot](https://github.com/dngr2/resilient-telegram-bot)
-A bot built around what happens when the API *doesn't* answer. Transient and
-permanent failures are separate types — a 502 retries, a 401 never does. Backoff
-uses full jitter so retries don't land as one synchronised stampede. Exhausting
-the retry budget logs and continues; only a permanent error exits.
-
-```bash
-python -m bot.main --demo    # no token — watch it recover from a flaky API
-```
-
-### 👁 [pagewatch](https://github.com/dngr2/pagewatch)
-Alerts you won't mute. Every page differs on every fetch — timestamps, view
-counters, session tokens — so it watches a **CSS-targeted value**, normalises
-known noise, and never mistakes a WAF challenge for a change.
-
-```bash
-python -m pagewatch --demo   # baseline → noise (silent) → real change → blocked
-```
-
-
-### 🏢 [fastapi-multitenant](https://github.com/dngr2/fastapi-multitenant)
-Multi-tenant FastAPI + SQLAlchemy 2.0. Tenant isolation is enforced by a session-level
-ORM event rather than per query — an event can't be forgotten by whoever adds a query
-next year. The suite includes a mutation check: one test queries through an *unscoped*
-session and asserts both tenants' rows **are** visible, proving the isolation tests can
-actually fail. Migrations tested in both directions against a seeded database.
-
-### 🗡 [mu-server-architecture](https://github.com/dngr2/mu-server-architecture)
-MMO server architecture in C# / .NET 8. Login, Game World and Chat are separate
-assemblies — delete the World project and Chat still compiles. The demo shows the part
-that matters: the client asks to teleport to 9999,9999 and the server refuses and sends
-back the real position. Client-authoritative movement is the exploit most ready-made
-server packs ship with.
-
 ### 📊 [spreadsheet-consolidator](https://github.com/dngr2/spreadsheet-consolidator)
 Merges spreadsheets that disagree, and **reports** the disagreements instead of silently
 picking a winner. Handles the quiet data-loss cases: `"1,250.00"` parsed as a number
@@ -261,7 +271,7 @@ mailbox.
 
 ---
 
-**Python · Rust · Go · TypeScript · JavaScript · Java · C++ · C# / .NET · PHP · Ruby · SQL · Bash · SystemVerilog**
+**Python · Rust · Go · TypeScript · JavaScript · Java · C++ · C# / .NET · PHP · Ruby · Solidity · SQL · Bash · SystemVerilog**
 
 **FastAPI · SQLAlchemy · Selenium · Linux · PostgreSQL · Docker · Maven · Cargo · CMake**
 
