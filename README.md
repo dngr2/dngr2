@@ -1,14 +1,18 @@
-## Python automation, scraping, and things that keep running
+## The failures that don't crash — across ten languages, now smart contracts
 
-I build tools for the boring failure modes — the ones where nothing crashes,
-nothing alerts, and the data has been quietly wrong for three weeks.
+I find the bugs where nothing crashes and nothing alerts: a value that satisfies
+every check while being meaningless, code that passes its own test suite for the
+wrong reason, data that has been quietly wrong for three weeks.
 
-A scraper that returns `0 results` because it parsed a block page as data.
-A bot that died on one API timeout at 3am. A monitor that alerts on the
-timestamp instead of the price. Every repo below exists because of one of those.
+Twenty-plus of these are merged into projects I don't maintain — ten languages,
+each fix carrying a test that reproduces the defect first. The same method now
+applied to Solidity: three smart-contract security repos below — vulnerability
+classes, a written audit, and invariant fuzzing.
 
-**Everything here runs.** Most have a one-command demo that needs no key,
-no signup, and no network.
+The rest is backend and scraping: a block page returns `200 OK`, so every response
+is classified before extraction and never stored as data; bots built around the
+3am timeout; monitors that watch the value, not the timestamp. **Everything runs**
+— most with a one-command demo, no key or signup.
 
 ---
 
