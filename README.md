@@ -198,6 +198,21 @@ The same idea as the rest of this work — the failure that doesn't revert — i
 forge test   # 12 tests: exploit + fix for each of the six findings
 ```
 
+### 🔬 [staking-audit](https://github.com/dngr2/staking-audit)
+A worked security review of a Synthetix-model `StakingRewards` protocol — the
+deliverable a competitive audit actually asks for. Three planted bugs, each proven
+by a Foundry PoC and written up in a severity-rated findings report: `stake()`
+skips the reward checkpoint so a one-day staker walks off with a seven-day
+staker's rewards (High), `notifyRewardAmount` is unauthenticated (Medium), reward
+rounding strands dust (Low). See [`AUDIT.md`](https://github.com/dngr2/staking-audit/blob/main/AUDIT.md).
+
+### 🎲 [invariant-fuzzing](https://github.com/dngr2/invariant-fuzzing)
+Finding a bug the way a real audit does — state the property the system must
+always hold and let Foundry hunt for a sequence that breaks it. A constant-product
+AMM whose invariant (`reserve0 * reserve1` never decreases) holds over 4,096
+fuzzed swaps on the fixed pool and fails on a buggy one that lets a trader
+round-trip 100,000 into 122,000, draining the LPs.
+
 ### 🕸 [stealth-scrape](https://github.com/dngr2/stealth-scrape)
 Config-driven scraping for sites that don't want to be scraped. Adding a site is
 a YAML file, not code. The core idea: a block page returns `200 OK`, so every
