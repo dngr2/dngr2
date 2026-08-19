@@ -6,9 +6,9 @@ wrong reason, data that has been quietly wrong for three weeks.
 
 Twenty-plus of these are merged into projects I don't maintain — ten languages,
 each fix carrying a test that reproduces the defect first. The same method now
-applied to Solidity: an installable invariant/exploit-check library plus four
-security repos below — vulnerability classes, a written audit, invariant fuzzing,
-and proxy/upgrade takeovers — and a
+applied to Solidity, Move, and Solana: an installable invariant/exploit-check library
+plus security-PoC repos below — vulnerability classes, a written audit, invariant
+fuzzing, proxy/upgrade takeovers, and Move/Solana authorization bugs — and a
 competitive-audit researcher profile on
 [Sherlock](https://audits.sherlock.xyz/watson/dngr2) and
 [Cantina](https://cantina.xyz/u/dngr2).
@@ -199,10 +199,20 @@ xUnit's collection comparer does not surface a leading U+FEFF).
 Drop-in Foundry invariants and known-exploit checks for DeFi primitives — point a
 module at your own contract and let Foundry fuzz the properties that matter, or run
 a coded exploit check and get a failing transaction if the bug is present, not a
-vague warning. `forge install dngr2/invariant-kit`. Live: ERC-4626 solvency +
-first-depositor inflation, and the staking `notifyRewardAmount` restriction check
-(the most common real staking finding). AMM and proxy modules next. Productizes the
-demo repos below into something a team actually installs.
+vague warning. `forge install dngr2/invariant-kit`. Four modules: ERC-4626 (solvency +
+first-depositor inflation), staking (`notifyRewardAmount` restriction), constant-product
+AMM (k-never-decreases + round-trip drain), and ERC-1967 proxy (unprotected-init +
+storage-collision). Productizes the demo repos below into something a team actually installs.
+
+### 🦀 [move-security-notes](https://github.com/dngr2/move-security-notes)
+The same method carried to Move (Aptos): access control (bare `address` vs `&signer`),
+precision (a dust deposit rounding to zero shares), resource-not-found DoS, and fee-bypass
+rounding. Vulnerable/fixed pairs, each with an `aptos move test`.
+
+### ◎ [solana-security-notes](https://github.com/dngr2/solana-security-notes)
+And to native Solana: missing signer check and missing owner check (account
+substitution) — the authorization footguns Solana leaves entirely to the program.
+Vulnerable/fixed pairs with unit tests.
 
 ### 🛡 [contract-security-notes](https://github.com/dngr2/contract-security-notes)
 Six ways a Solidity contract loses money while every line looks correct — vault
