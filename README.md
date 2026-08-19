@@ -6,8 +6,9 @@ wrong reason, data that has been quietly wrong for three weeks.
 
 Twenty-plus of these are merged into projects I don't maintain — ten languages,
 each fix carrying a test that reproduces the defect first. The same method now
-applied to Solidity: four smart-contract security repos below — vulnerability
-classes, a written audit, invariant fuzzing, and proxy/upgrade takeovers — and a
+applied to Solidity: an installable invariant/exploit-check library plus four
+security repos below — vulnerability classes, a written audit, invariant fuzzing,
+and proxy/upgrade takeovers — and a
 competitive-audit researcher profile on
 [Sherlock](https://audits.sherlock.xyz/watson/dngr2) and
 [Cantina](https://cantina.xyz/u/dngr2).
@@ -193,6 +194,15 @@ xUnit's collection comparer does not surface a leading U+FEFF).
 ---
 
 ### Repos
+
+### 🧰 [invariant-kit](https://github.com/dngr2/invariant-kit)
+Drop-in Foundry invariants and known-exploit checks for DeFi primitives — point a
+module at your own contract and let Foundry fuzz the properties that matter, or run
+a coded exploit check and get a failing transaction if the bug is present, not a
+vague warning. `forge install dngr2/invariant-kit`. Live: ERC-4626 solvency +
+first-depositor inflation, and the staking `notifyRewardAmount` restriction check
+(the most common real staking finding). AMM and proxy modules next. Productizes the
+demo repos below into something a team actually installs.
 
 ### 🛡 [contract-security-notes](https://github.com/dngr2/contract-security-notes)
 Six ways a Solidity contract loses money while every line looks correct — vault
