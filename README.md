@@ -217,6 +217,14 @@ AMM whose invariant (`reserve0 * reserve1` never decreases) holds over 4,096
 fuzzed swaps on the fixed pool and fails on a buggy one that lets a trader
 round-trip 100,000 into 122,000, draining the LPs.
 
+### 🧬 [proxy-security](https://github.com/dngr2/proxy-security)
+The two ways upgradeable contracts get taken over — where much of the real
+high-severity money is, since almost every protocol runs behind a proxy. Against a
+real ERC-1967 delegatecall proxy: an **unprotected initializer** lets an attacker
+re-initialize and drain the vault, and a **storage collision** on upgrade (a V2
+that prepends a field) makes `owner` read the old deposit total. Each with a
+Foundry PoC and a fixed, append-only counterpart.
+
 ### 🕸 [stealth-scrape](https://github.com/dngr2/stealth-scrape)
 Config-driven scraping for sites that don't want to be scraped. Adding a site is
 a YAML file, not code. The core idea: a block page returns `200 OK`, so every
