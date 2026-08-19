@@ -6,8 +6,11 @@ wrong reason, data that has been quietly wrong for three weeks.
 
 Twenty-plus of these are merged into projects I don't maintain — ten languages,
 each fix carrying a test that reproduces the defect first. The same method now
-applied to Solidity: three smart-contract security repos below — vulnerability
-classes, a written audit, and invariant fuzzing.
+applied to Solidity: four smart-contract security repos below — vulnerability
+classes, a written audit, invariant fuzzing, and proxy/upgrade takeovers — and a
+competitive-audit researcher profile on
+[Sherlock](https://audits.sherlock.xyz/watson/dngr2) and
+[Cantina](https://cantina.xyz/u/dngr2).
 
 The rest is backend and scraping: a block page returns `200 OK`, so every response
 is classified before extraction and never stored as data; bots built around the
