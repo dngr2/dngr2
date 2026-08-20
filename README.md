@@ -39,6 +39,7 @@ is the only thing I take, and it's in the source.
 | [**token-sale**](https://github.com/dngr2/token-sale) | Fixed-price presale/IDO: soft/hard caps, refund-on-fail, purchase vesting, allowlist | fee on raise |
 | [**nft-launchpad**](https://github.com/dngr2/nft-launchpad) | NFT collection minter: phased allowlist/public mint, ERC-2981 royalties, reveal lock | fee per mint |
 | [**staking-rewards**](https://github.com/dngr2/staking-rewards) | Synthetix-style liquidity mining, checkpoint-before-balance, solvency-checked notify | fee per pool |
+| [**paymaster**](https://github.com/dngr2/paymaster) | ERC-4337 gas sponsorship (v0.7): verifying (sponsored) + token (pay gas in ERC-20) | deposit + markup |
 | [**payment-streaming**](https://github.com/dngr2/payment-streaming) | Linear+cliff token streams (payroll/grants), cancelable | fee per stream |
 | [**subscriptions**](https://github.com/dngr2/subscriptions) | Recurring pull-payments, permissionless keeper charge, over-charge-proof | fee per charge |
 | [**dao-factory**](https://github.com/dngr2/dao-factory) | One call → ERC20Votes token + Governor + Timelock, full lifecycle tested | fee per DAO |
