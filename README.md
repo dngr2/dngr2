@@ -20,6 +20,34 @@ is classified before extraction and never stored as data; bots built around the
 
 ---
 
+## Deployable on-chain products
+
+A line of production-grade Solidity infrastructure — the contracts most projects
+have to deploy anyway, each built the way I audit: fee-on-transfer-safe, reentrancy-safe,
+no admin path to user funds, and a **funds-conservation invariant** fuzzed over tens of
+thousands of calls. Every repo is MIT, Foundry-tested, CI-green, and earns a **bounded,
+capped** protocol fee — verifiable on-chain, not a rug. Deploy your own instance; the fee
+is the only thing I take, and it's in the source.
+
+| Product | What it is | Earns |
+|---|---|---|
+| [**v4-fee-hooks**](https://github.com/dngr2/v4-fee-hooks) | Uniswap v4 hook suite + factory/launchpad flywheel — dynamic/LVR fees, staking, referral | protocol cut per swap + launch fee |
+| [**onchain-escrow**](https://github.com/dngr2/onchain-escrow) | Milestone escrow with arbiter dispute resolution — marketplace/freelance settlement | fee per release |
+| [**yield-vault**](https://github.com/dngr2/yield-vault) | ERC-4626 vault, inflation-attack-safe, mgmt + high-water performance fees | mgmt + perf fee |
+| [**token-tools**](https://github.com/dngr2/token-tools) | The launch kit: merkle airdrop, vesting/locker, multisend, payment splitter | fee per use |
+| [**payment-streaming**](https://github.com/dngr2/payment-streaming) | Linear+cliff token streams (payroll/grants), cancelable | fee per stream |
+| [**subscriptions**](https://github.com/dngr2/subscriptions) | Recurring pull-payments, permissionless keeper charge, over-charge-proof | fee per charge |
+| [**dao-factory**](https://github.com/dngr2/dao-factory) | One call → ERC20Votes token + Governor + Timelock, full lifecycle tested | fee per DAO |
+| [**multisig-wallet**](https://github.com/dngr2/multisig-wallet) | m-of-n multisig, self-governed owner set, reentrancy-safe execution | fee per deploy |
+| [**auction-house**](https://github.com/dngr2/auction-house) | English + Dutch NFT auctions, anti-snipe, pull-refunds | fee per sale |
+| [**onchain-game-economy**](https://github.com/dngr2/onchain-game-economy) | EIP-712 capped reward vouchers, ERC-1155 items, marketplace, rate-limited treasury | fee per trade |
+
+Safety isn't a claim — it's a suite: [**v4-hook-invariants**](https://github.com/dngr2/v4-hook-invariants)
+and [**invariant-kit**](https://github.com/dngr2/invariant-kit) are the property tests these
+products are checked against. You don't trust the author; you run the proof.
+
+---
+
 
 ### Contributing upstream
 
