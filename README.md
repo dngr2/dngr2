@@ -204,6 +204,15 @@ first-depositor inflation), staking (`notifyRewardAmount` restriction), constant
 AMM (k-never-decreases + round-trip drain), and ERC-1967 proxy (unprotected-init +
 storage-collision). Productizes the demo repos below into something a team actually installs.
 
+### 🪝 [v4-hook-invariants](https://github.com/dngr2/v4-hook-invariants)
+Property-based invariant testing for Uniswap v4 hooks — the new attack surface v4
+core assumes a hook preserves but doesn't enforce. Drops a real `PoolManager` plus the
+hook under test into a Foundry invariant harness and fuzzes swaps against reusable
+predicates: a fee bound (a hook can't skim more than a fair share of swap output) and
+claim/reserve solvency (LP-withdrawable reserves stay backed). Ships a fair reference
+hook that passes and a 50% fee-skimmer the suite **catches** — a hook that plain v4
+executes without complaint.
+
 ### 🦀 [move-security-notes](https://github.com/dngr2/move-security-notes)
 The same method carried to Move (Aptos): access control (bare `address` vs `&signer`),
 precision (a dust deposit rounding to zero shares), resource-not-found DoS, and fee-bypass
