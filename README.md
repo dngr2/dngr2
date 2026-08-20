@@ -213,6 +213,15 @@ claim/reserve solvency (LP-withdrawable reserves stay backed). Ships a fair refe
 hook that passes and a 50% fee-skimmer the suite **catches** — a hook that plain v4
 executes without complaint.
 
+### ⚙️ [v4-fee-hooks](https://github.com/dngr2/v4-fee-hooks)
+Three Uniswap v4 hook products that give pool users a service and earn a
+**provably-bounded** on-chain fee — each verified against the fee bound from
+[v4-hook-invariants](https://github.com/dngr2/v4-hook-invariants), so the cut it can
+take is capped and checkable, not a rug. A **dynamic-fee** hook (raises the LP fee on
+volatility, eases it when calm), an **auto-compounding vault** (reinvests LP fees for a
+bounded cut of the *yield*), and an on-chain **limit-order** hook (single-sided
+liquidity filled as the price crosses a tick, fee per fill). Foundry, six tests green.
+
 ### 🦀 [move-security-notes](https://github.com/dngr2/move-security-notes)
 The same method carried to Move (Aptos): access control (bare `address` vs `&signer`),
 precision (a dust deposit rounding to zero shares), resource-not-found DoS, and fee-bypass
