@@ -35,6 +35,10 @@ is the only thing I take, and it's in the source.
 | [**onchain-escrow**](https://github.com/dngr2/onchain-escrow) | Milestone escrow with arbiter dispute resolution — marketplace/freelance settlement | fee per release |
 | [**yield-vault**](https://github.com/dngr2/yield-vault) | ERC-4626 vault, inflation-attack-safe, mgmt + high-water performance fees | mgmt + perf fee |
 | [**token-tools**](https://github.com/dngr2/token-tools) | The launch kit: merkle airdrop, vesting/locker, multisend, payment splitter | fee per use |
+| [**token-factory**](https://github.com/dngr2/token-factory) | ERC-20 launcher: trustworthy capped/mintable/permit token + a bounded-fee token | fee per launch |
+| [**token-sale**](https://github.com/dngr2/token-sale) | Fixed-price presale/IDO: soft/hard caps, refund-on-fail, purchase vesting, allowlist | fee on raise |
+| [**nft-launchpad**](https://github.com/dngr2/nft-launchpad) | NFT collection minter: phased allowlist/public mint, ERC-2981 royalties, reveal lock | fee per mint |
+| [**staking-rewards**](https://github.com/dngr2/staking-rewards) | Synthetix-style liquidity mining, checkpoint-before-balance, solvency-checked notify | fee per pool |
 | [**payment-streaming**](https://github.com/dngr2/payment-streaming) | Linear+cliff token streams (payroll/grants), cancelable | fee per stream |
 | [**subscriptions**](https://github.com/dngr2/subscriptions) | Recurring pull-payments, permissionless keeper charge, over-charge-proof | fee per charge |
 | [**dao-factory**](https://github.com/dngr2/dao-factory) | One call → ERC20Votes token + Governor + Timelock, full lifecycle tested | fee per DAO |
