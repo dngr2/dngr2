@@ -96,6 +96,7 @@ no admin path to funds.
 | [**rotating-savings**](https://github.com/dngr2/rotating-savings) | On-chain ROSCA (susu/tanda/chit fund): members contribute each round, the pot rotates to each in turn; interest-free credit circle | — |
 | [**circuit-breaker-vault**](https://github.com/dngr2/circuit-breaker-vault) | 1:1 deposit vault with a global rolling withdrawal rate limit (anti-drain safety pattern), solvency + rate invariants | — |
 | [**social-recovery**](https://github.com/dngr2/social-recovery) | M-of-N guardian ownership recovery with a timelock + owner veto — the smart-wallet lost-key answer | — |
+| [**commitment-vault**](https://github.com/dngr2/commitment-vault) | StickK-style savings commitment: hit your goal by the deadline to withdraw free, quit early or miss and a penalty goes to a chosen beneficiary | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
