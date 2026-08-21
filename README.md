@@ -108,6 +108,7 @@ no admin path to funds.
 | [**no-loss-lottery**](https://github.com/dngr2/no-loss-lottery) | PoolTogether-style prize savings: deposits always withdrawable 1:1 (no loss), sponsors fund a prize, and a commit-reveal draw awards it to a balance-weighted random depositor | — |
 | [**quadratic-voting**](https://github.com/dngr2/quadratic-voting) | RadicalxChange-style QV poll: each voter gets an equal credit budget and v votes on an option cost v², so spreading support is cheap and concentrating is expensive | — |
 | [**amortizing-loan**](https://github.com/dngr2/amortizing-loan) | Collateralized installment loan: borrower posts collateral, lender funds principal, borrower repays in scheduled installments (equal principal + declining-balance interest); overdue past grace → liquidation | — |
+| [**dividend-token**](https://github.com/dngr2/dividend-token) | Transferable ERC-20 whose holders accrue a reward token pro-rata, correct across transfers via the magnified-dividend-per-share algorithm; O(1) distributions | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
