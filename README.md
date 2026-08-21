@@ -99,6 +99,7 @@ no admin path to funds.
 | [**commitment-vault**](https://github.com/dngr2/commitment-vault) | StickK-style savings commitment: hit your goal by the deadline to withdraw free, quit early or miss and a penalty goes to a chosen beneficiary | — |
 | [**nft-index-vault**](https://github.com/dngr2/nft-index-vault) | Fungible floor index over an NFT collection (NFTX-lite): deposit any NFT for one index token, redeem for a held NFT; fully-backed | — |
 | [**vickrey-auction**](https://github.com/dngr2/vickrey-auction) | Sealed-bid second-price (Vickrey) NFT auction via commit-reveal: highest bidder wins but pays the second-highest price | — |
+| [**parametric-cover**](https://github.com/dngr2/parametric-cover) | Fully-backed parametric insurance pool: underwriters earn premiums, buyers get coverage that pays out iff an assessor confirms the event | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
