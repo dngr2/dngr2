@@ -77,6 +77,9 @@ no admin path to funds.
 | [**soulbound-credentials**](https://github.com/dngr2/soulbound-credentials) | ERC-5192 non-transferable credential registry: issuer-attested, expiry + revocation + burn | — |
 | [**oracle-aggregator**](https://github.com/dngr2/oracle-aggregator) | Defensive price oracle: Chainlink staleness + L2 sequencer-uptime + TWAP-deviation guards | — |
 | [**deploy-tools**](https://github.com/dngr2/deploy-tools) | Front-run-safe CREATE2 deterministic factory + Multicall3-compatible aggregator | — |
+| [**prediction-market**](https://github.com/dngr2/prediction-market) | Binary YES/NO market: complete-set full-collateral (solvent by construction, not an AMM), oracle-resolved | — |
+| [**rentable-nft**](https://github.com/dngr2/rentable-nft) | ERC-4907 rentable NFT + escrow rental market: time-limited user role, renter can never own or transfer | rental fee |
+| [**meta-tx-forwarder**](https://github.com/dngr2/meta-tx-forwarder) | ERC-2771 gasless meta-transactions: EIP-712 relayed requests, nonce/replay-safe, 63/64 gas guard | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
