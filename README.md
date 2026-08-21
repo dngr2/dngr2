@@ -101,6 +101,7 @@ no admin path to funds.
 | [**vickrey-auction**](https://github.com/dngr2/vickrey-auction) | Sealed-bid second-price (Vickrey) NFT auction via commit-reveal: highest bidder wins but pays the second-highest price | — |
 | [**parametric-cover**](https://github.com/dngr2/parametric-cover) | Fully-backed parametric insurance pool: underwriters earn premiums, buyers get coverage that pays out iff an assessor confirms the event | — |
 | [**ragequit-dao**](https://github.com/dngr2/ragequit-dao) | Moloch-style shared-treasury DAO with ratio-preserving ragequit: members burn shares for their exact treasury slice, exiting before a disliked proposal executes | — |
+| [**harberger-license**](https://github.com/dngr2/harberger-license) | Always-for-sale asset under a Harberger tax (COST): holder self-assesses a price, streams tax on it, anyone can buy at that price, and a drained deposit forecloses it | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
