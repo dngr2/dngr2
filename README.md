@@ -51,6 +51,38 @@ Safety isn't a claim — it's a suite: [**v4-hook-invariants**](https://github.c
 and [**invariant-kit**](https://github.com/dngr2/invariant-kit) are the property tests these
 products are checked against. You don't trust the author; you run the proof.
 
+### More on-chain primitives
+
+Non-custodial building blocks, same discipline: a **stateful solvency/conservation invariant**
+fuzzed over 12,800 calls (proven non-hollow), a **mutation check** on the core math, CI-green, MIT.
+Most are fee-less infrastructure — where a bounded fee exists it's named; a `—` means no protocol fee,
+no admin path to funds.
+
+| Primitive | What it is | Fee |
+|---|---|---|
+| [**stablecoin-cdp**](https://github.com/dngr2/stablecoin-cdp) | Single-collateral CDP: mint a stablecoin against collateral, RAY stability-fee index, penalty liquidation, debt ceiling | stability fee |
+| [**savings-rate-vault**](https://github.com/dngr2/savings-rate-vault) | DSR-style ERC-4626: chi-index per-second accrual, reserve-backed (solvent by construction) | — |
+| [**minimal-dex**](https://github.com/dngr2/minimal-dex) | Constant-product AMM (Pair/Factory/Router), k-invariant enforced, fee-on-transfer-safe | LP fee |
+| [**dutch-auction**](https://github.com/dngr2/dutch-auction) | Descending-price sale (linear + convex), seller-favorable rounding, conservation invariants | — |
+| [**bonding-curve-token**](https://github.com/dngr2/bonding-curve-token) | Linear bonding curve, exact-integral buy/sell, reserve-solvent, no risk-free round-trip | optional bounded |
+| [**otc-order-desk**](https://github.com/dngr2/otc-order-desk) | EIP-712 signed OTC orders (EOA + EIP-1271), partial fills, non-custodial zero-escrow settlement | — |
+| [**merkle-distributor**](https://github.com/dngr2/merkle-distributor) | Gas-efficient Merkle airdrop, bitmap-tracked claims, expiry sweep of unclaimed | — |
+| [**merkle-vesting-airdrop**](https://github.com/dngr2/merkle-vesting-airdrop) | Proof-gated claim into a cliff+linear vesting grant, deadline sweep with backed-amount guard | — |
+| [**vesting-wallet**](https://github.com/dngr2/vesting-wallet) | Multi-grant cliff+linear vesting, revocable grants with conservation, FoT-safe funding | — |
+| [**payment-splitter**](https://github.com/dngr2/payment-splitter) | Pull-based split of ETH + ERC-20 among fixed immutable shares, reentrancy-safe | — |
+| [**crowdfund-escrow**](https://github.com/dngr2/crowdfund-escrow) | All-or-nothing crowdfunding: creator claims only on goal-by-deadline, else backers refund | — |
+| [**liquidity-locker**](https://github.com/dngr2/liquidity-locker) | Non-custodial LP/token locker, only-lengthen extension, no admin unlock | — |
+| [**nft-staking**](https://github.com/dngr2/nft-staking) | Synthetix-style NFT staking: stake ERC-721 for per-second ERC-20 rewards, solvency-checked | — |
+| [**timelock-controller**](https://github.com/dngr2/timelock-controller) | Governance delayed role-gated execution, batch ops, self-governed min-delay | — |
+| [**soulbound-credentials**](https://github.com/dngr2/soulbound-credentials) | ERC-5192 non-transferable credential registry: issuer-attested, expiry + revocation + burn | — |
+| [**oracle-aggregator**](https://github.com/dngr2/oracle-aggregator) | Defensive price oracle: Chainlink staleness + L2 sequencer-uptime + TWAP-deviation guards | — |
+| [**deploy-tools**](https://github.com/dngr2/deploy-tools) | Front-run-safe CREATE2 deterministic factory + Multicall3-compatible aggregator | — |
+
+And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
+dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
+verified house edges. Published as an open-source *reference primitive*, not an operated service:
+running it for real-money wagers is a licensing/KYC question for the deployer, stated plainly in the repo.
+
 ---
 
 
