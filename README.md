@@ -116,6 +116,7 @@ no admin path to funds.
 | [**buyback-burner**](https://github.com/dngr2/buyback-burner) | Treasury-backed price floor: holders always sell the project token to a funded reserve at a fixed floor price, and every token bought is burned (0xdEaD), shrinking supply | — |
 | [**sealed-bid-auction**](https://github.com/dngr2/sealed-bid-auction) | First-price sealed-bid auction: bidders commit hashed bids backed by a deposit, reveal during a window, and the highest bidder wins and pays their own bid (vs Vickrey's second price) | — |
 | [**matched-donation**](https://github.com/dngr2/matched-donation) | Sponsor-matched donation campaign: donations pass straight to the cause and are matched from a sponsor pool at a fixed ratio up to the cap; sponsor reclaims the unused remainder | — |
+| [**conviction-voting**](https://github.com/dngr2/conviction-voting) | Commons-Stack/1Hive conviction voting: staked support accrues conviction with exponential per-period decay, and crossing the requested-amount threshold funds a proposal from the treasury | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
