@@ -94,6 +94,7 @@ no admin path to funds.
 | [**secret-ballot**](https://github.com/dngr2/secret-ballot) | Commit-reveal weighted voting: votes stay private during the vote, copy-resistant binding, faithful-tally invariant | — |
 | [**p2p-loan**](https://github.com/dngr2/p2p-loan) | Bilateral fixed-term collateralized loans (no pool/oracle): escrow collateral, fund, repay-to-reclaim or default-to-seize | — |
 | [**rotating-savings**](https://github.com/dngr2/rotating-savings) | On-chain ROSCA (susu/tanda/chit fund): members contribute each round, the pot rotates to each in turn; interest-free credit circle | — |
+| [**circuit-breaker-vault**](https://github.com/dngr2/circuit-breaker-vault) | 1:1 deposit vault with a global rolling withdrawal rate limit (anti-drain safety pattern), solvency + rate invariants | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
