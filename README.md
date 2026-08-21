@@ -92,6 +92,7 @@ no admin path to funds.
 | [**disperse**](https://github.com/dngr2/disperse) | Batch-send native coin + ERC-20 to many recipients in one tx (payroll/airdrop), exact-sum + refund, holds-no-value | — |
 | [**access-pass**](https://github.com/dngr2/access-pass) | Time-boxed transferable membership NFT: buy/renew a pass, isValid() access gate, expiry stacks on early renew | issuer fee |
 | [**secret-ballot**](https://github.com/dngr2/secret-ballot) | Commit-reveal weighted voting: votes stay private during the vote, copy-resistant binding, faithful-tally invariant | — |
+| [**p2p-loan**](https://github.com/dngr2/p2p-loan) | Bilateral fixed-term collateralized loans (no pool/oracle): escrow collateral, fund, repay-to-reclaim or default-to-seize | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
