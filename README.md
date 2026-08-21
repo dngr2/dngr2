@@ -97,6 +97,7 @@ no admin path to funds.
 | [**circuit-breaker-vault**](https://github.com/dngr2/circuit-breaker-vault) | 1:1 deposit vault with a global rolling withdrawal rate limit (anti-drain safety pattern), solvency + rate invariants | — |
 | [**social-recovery**](https://github.com/dngr2/social-recovery) | M-of-N guardian ownership recovery with a timelock + owner veto — the smart-wallet lost-key answer | — |
 | [**commitment-vault**](https://github.com/dngr2/commitment-vault) | StickK-style savings commitment: hit your goal by the deadline to withdraw free, quit early or miss and a penalty goes to a chosen beneficiary | — |
+| [**nft-index-vault**](https://github.com/dngr2/nft-index-vault) | Fungible floor index over an NFT collection (NFTX-lite): deposit any NFT for one index token, redeem for a held NFT; fully-backed | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
