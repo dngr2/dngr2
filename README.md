@@ -114,6 +114,7 @@ no admin path to funds.
 | [**milestone-escrow**](https://github.com/dngr2/milestone-escrow) | Project escrow released in independent milestones: payer funds upfront, payer/arbiter approve each to pay the payee, arbiter refunds disputed ones; always fully backed by pending milestones | — |
 | [**lockdrop**](https://github.com/dngr2/lockdrop) | Astroport-style fair-launch lockdrop: lock tokens for a chosen duration to earn rewards weighted by amount × duration; reclaim tokens at unlock and claim pro-rata rewards | — |
 | [**buyback-burner**](https://github.com/dngr2/buyback-burner) | Treasury-backed price floor: holders always sell the project token to a funded reserve at a fixed floor price, and every token bought is burned (0xdEaD), shrinking supply | — |
+| [**sealed-bid-auction**](https://github.com/dngr2/sealed-bid-auction) | First-price sealed-bid auction: bidders commit hashed bids backed by a deposit, reveal during a window, and the highest bidder wins and pays their own bid (vs Vickrey's second price) | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
