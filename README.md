@@ -113,6 +113,7 @@ no admin path to funds.
 | [**gauge-bribe-market**](https://github.com/dngr2/gauge-bribe-market) | Votium/Hidden-Hand-style vote-incentive market: voters lock power on gauges, bribers deposit rewards, and after the epoch voters claim bribes pro-rata to their share of a gauge's votes | — |
 | [**milestone-escrow**](https://github.com/dngr2/milestone-escrow) | Project escrow released in independent milestones: payer funds upfront, payer/arbiter approve each to pay the payee, arbiter refunds disputed ones; always fully backed by pending milestones | — |
 | [**lockdrop**](https://github.com/dngr2/lockdrop) | Astroport-style fair-launch lockdrop: lock tokens for a chosen duration to earn rewards weighted by amount × duration; reclaim tokens at unlock and claim pro-rata rewards | — |
+| [**buyback-burner**](https://github.com/dngr2/buyback-burner) | Treasury-backed price floor: holders always sell the project token to a funded reserve at a fixed floor price, and every token bought is burned (0xdEaD), shrinking supply | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
