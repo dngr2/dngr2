@@ -104,6 +104,7 @@ no admin path to funds.
 | [**harberger-license**](https://github.com/dngr2/harberger-license) | Always-for-sale asset under a Harberger tax (COST): holder self-assesses a price, streams tax on it, anyone can buy at that price, and a drained deposit forecloses it | — |
 | [**token-stream**](https://github.com/dngr2/token-stream) | Sablier-style linear vesting payment streams: a locked deposit vests linearly to a recipient who withdraws anytime; either party can cancel to split vested vs unvested | — |
 | [**quadratic-funding**](https://github.com/dngr2/quadratic-funding) | Gitcoin-style matched-funding round: a matching pool is split by (Σ√cᵢ)² weighting so many small donations out-match a few large ones; floor rounding keeps it solvent | — |
+| [**rebase-token**](https://github.com/dngr2/rebase-token) | Ampleforth-style elastic-supply ERC-20: balances held in fixed gons, a rebase rescales gons-per-fragment so every balance moves proportionally in O(1) while ownership fractions are preserved | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
