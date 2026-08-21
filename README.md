@@ -82,6 +82,7 @@ no admin path to funds.
 | [**meta-tx-forwarder**](https://github.com/dngr2/meta-tx-forwarder) | ERC-2771 gasless meta-transactions: EIP-712 relayed requests, nonce/replay-safe, 63/64 gas guard | — |
 | [**fixed-term-bond**](https://github.com/dngr2/fixed-term-bond) | Zero-coupon bond: buy at a discount, redeem par at maturity, fully reserve-backed so redemption is always honored | — |
 | [**stream-nft**](https://github.com/dngr2/stream-nft) | Tokenized vesting stream: the stream is a tradeable ERC-721, per-stream accounting makes a mid-stream sale safe, cancelable | — |
+| [**tranched-vault**](https://github.com/dngr2/tranched-vault) | Tranched structured product: senior (fixed return, protected) / junior (first-loss, keeps upside) waterfall over a yield source | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
