@@ -80,6 +80,8 @@ no admin path to funds.
 | [**prediction-market**](https://github.com/dngr2/prediction-market) | Binary YES/NO market: complete-set full-collateral (solvent by construction, not an AMM), oracle-resolved | — |
 | [**rentable-nft**](https://github.com/dngr2/rentable-nft) | ERC-4907 rentable NFT + escrow rental market: time-limited user role, renter can never own or transfer | rental fee |
 | [**meta-tx-forwarder**](https://github.com/dngr2/meta-tx-forwarder) | ERC-2771 gasless meta-transactions: EIP-712 relayed requests, nonce/replay-safe, 63/64 gas guard | — |
+| [**fixed-term-bond**](https://github.com/dngr2/fixed-term-bond) | Zero-coupon bond: buy at a discount, redeem par at maturity, fully reserve-backed so redemption is always honored | — |
+| [**stream-nft**](https://github.com/dngr2/stream-nft) | Tokenized vesting stream: the stream is a tradeable ERC-721, per-stream accounting makes a mid-stream sale safe, cancelable | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
