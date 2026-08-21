@@ -87,6 +87,7 @@ no admin path to funds.
 | [**flash-mint-token**](https://github.com/dngr2/flash-mint-token) | ERC-20 with ERC-3156 flash minting: mint/burn liquidity in-tx (no pool), bounded fee to treasury, supply-conservation invariant | flash fee |
 | [**wrapped-native**](https://github.com/dngr2/wrapped-native) | Modern WETH: wrap native coin 1:1 into an ERC-20 with EIP-2612 permit, fully-backed invariant, no owner/fee | — |
 | [**inheritance-vault**](https://github.com/dngr2/inheritance-vault) | On-chain dead-man's switch: owner checks in to keep control, beneficiary claims after the owner goes silent; non-custodial | — |
+| [**allowance-module**](https://github.com/dngr2/allowance-module) | Treasury with per-spender rolling spending limits (refill each period), owner-revocable delegate caps | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
