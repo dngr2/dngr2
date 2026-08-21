@@ -88,6 +88,7 @@ no admin path to funds.
 | [**wrapped-native**](https://github.com/dngr2/wrapped-native) | Modern WETH: wrap native coin 1:1 into an ERC-20 with EIP-2612 permit, fully-backed invariant, no owner/fee | — |
 | [**inheritance-vault**](https://github.com/dngr2/inheritance-vault) | On-chain dead-man's switch: owner checks in to keep control, beneficiary claims after the owner goes silent; non-custodial | — |
 | [**allowance-module**](https://github.com/dngr2/allowance-module) | Treasury with per-spender rolling spending limits (refill each period), owner-revocable delegate caps | — |
+| [**nft-fractionalize**](https://github.com/dngr2/nft-fractionalize) | Lock an ERC-721 into ERC-20 fractions; reclaim the NFT only by holding the entire supply (all-or-nothing redeem) | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
