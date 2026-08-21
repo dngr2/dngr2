@@ -112,6 +112,7 @@ no admin path to funds.
 | [**twap-oracle**](https://github.com/dngr2/twap-oracle) | Uniswap-style time-weighted-average-price oracle: a price×time accumulator + observation log answers consult(secondsAgo) over any window via interpolation | — |
 | [**gauge-bribe-market**](https://github.com/dngr2/gauge-bribe-market) | Votium/Hidden-Hand-style vote-incentive market: voters lock power on gauges, bribers deposit rewards, and after the epoch voters claim bribes pro-rata to their share of a gauge's votes | — |
 | [**milestone-escrow**](https://github.com/dngr2/milestone-escrow) | Project escrow released in independent milestones: payer funds upfront, payer/arbiter approve each to pay the payee, arbiter refunds disputed ones; always fully backed by pending milestones | — |
+| [**lockdrop**](https://github.com/dngr2/lockdrop) | Astroport-style fair-launch lockdrop: lock tokens for a chosen duration to earn rewards weighted by amount × duration; reclaim tokens at unlock and claim pro-rata rewards | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
