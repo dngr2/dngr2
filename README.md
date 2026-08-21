@@ -91,6 +91,7 @@ no admin path to funds.
 | [**nft-fractionalize**](https://github.com/dngr2/nft-fractionalize) | Lock an ERC-721 into ERC-20 fractions; reclaim the NFT only by holding the entire supply (all-or-nothing redeem) | — |
 | [**disperse**](https://github.com/dngr2/disperse) | Batch-send native coin + ERC-20 to many recipients in one tx (payroll/airdrop), exact-sum + refund, holds-no-value | — |
 | [**access-pass**](https://github.com/dngr2/access-pass) | Time-boxed transferable membership NFT: buy/renew a pass, isValid() access gate, expiry stacks on early renew | issuer fee |
+| [**secret-ballot**](https://github.com/dngr2/secret-ballot) | Commit-reveal weighted voting: votes stay private during the vote, copy-resistant binding, faithful-tally invariant | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
