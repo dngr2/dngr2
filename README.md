@@ -106,6 +106,7 @@ no admin path to funds.
 | [**quadratic-funding**](https://github.com/dngr2/quadratic-funding) | Gitcoin-style matched-funding round: a matching pool is split by (Σ√cᵢ)² weighting so many small donations out-match a few large ones; floor rounding keeps it solvent | — |
 | [**rebase-token**](https://github.com/dngr2/rebase-token) | Ampleforth-style elastic-supply ERC-20: balances held in fixed gons, a rebase rescales gons-per-fragment so every balance moves proportionally in O(1) while ownership fractions are preserved | — |
 | [**no-loss-lottery**](https://github.com/dngr2/no-loss-lottery) | PoolTogether-style prize savings: deposits always withdrawable 1:1 (no loss), sponsors fund a prize, and a commit-reveal draw awards it to a balance-weighted random depositor | — |
+| [**quadratic-voting**](https://github.com/dngr2/quadratic-voting) | RadicalxChange-style QV poll: each voter gets an equal credit budget and v votes on an option cost v², so spreading support is cheap and concentrating is expensive | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
