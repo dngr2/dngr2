@@ -85,6 +85,7 @@ no admin path to funds.
 | [**tranched-vault**](https://github.com/dngr2/tranched-vault) | Tranched structured product: senior (fixed return, protected) / junior (first-loss, keeps upside) waterfall over a yield source | — |
 | [**multitoken-6909**](https://github.com/dngr2/multitoken-6909) | ERC-6909 minimal multi-token: per-id balances in one contract, operator + per-id allowance auth, supply-conservation invariant | — |
 | [**flash-mint-token**](https://github.com/dngr2/flash-mint-token) | ERC-20 with ERC-3156 flash minting: mint/burn liquidity in-tx (no pool), bounded fee to treasury, supply-conservation invariant | flash fee |
+| [**wrapped-native**](https://github.com/dngr2/wrapped-native) | Modern WETH: wrap native coin 1:1 into an ERC-20 with EIP-2612 permit, fully-backed invariant, no owner/fee | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
