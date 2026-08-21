@@ -111,6 +111,7 @@ no admin path to funds.
 | [**dividend-token**](https://github.com/dngr2/dividend-token) | Transferable ERC-20 whose holders accrue a reward token pro-rata, correct across transfers via the magnified-dividend-per-share algorithm; O(1) distributions | — |
 | [**twap-oracle**](https://github.com/dngr2/twap-oracle) | Uniswap-style time-weighted-average-price oracle: a price×time accumulator + observation log answers consult(secondsAgo) over any window via interpolation | — |
 | [**gauge-bribe-market**](https://github.com/dngr2/gauge-bribe-market) | Votium/Hidden-Hand-style vote-incentive market: voters lock power on gauges, bribers deposit rewards, and after the epoch voters claim bribes pro-rata to their share of a gauge's votes | — |
+| [**milestone-escrow**](https://github.com/dngr2/milestone-escrow) | Project escrow released in independent milestones: payer funds upfront, payer/arbiter approve each to pay the payee, arbiter refunds disputed ones; always fully backed by pending milestones | — |
 
 And a reference, **play-money** [**provably-fair-casino**](https://github.com/dngr2/provably-fair-casino) —
 dice / coinflip / roulette / slots on a commit-reveal RNG, with bankroll-solvency invariants and
