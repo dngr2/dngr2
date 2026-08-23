@@ -6,10 +6,11 @@ wrong reason, data that has been quietly wrong for three weeks.
 
 Twenty-plus of these are merged into projects I don't maintain — ten languages,
 each fix carrying a test that reproduces the defect first. The same method now
-applied to Solidity, Move, and Solana: an installable invariant/exploit-check library
-plus security-PoC repos below — vulnerability classes, a written audit, invariant
-fuzzing, proxy/upgrade takeovers, and Move/Solana authorization bugs — and a
-competitive-audit researcher profile on
+applied to Solidity, Move, and Solana: **drop-in security-check suites** for the newest
+attack surfaces (v4 hooks, account abstraction, Superchain interop — the *guard line* just
+below), an installable invariant/exploit-check library, security-PoC repos — vulnerability
+classes, a written audit, invariant fuzzing, proxy/upgrade takeovers, and Move/Solana
+authorization bugs — and a competitive-audit researcher profile on
 [Sherlock](https://audits.sherlock.xyz/watson/dngr2) and
 [Cantina](https://cantina.xyz/u/dngr2).
 
@@ -17,6 +18,28 @@ The rest is backend and scraping: a block page returns `200 OK`, so every respon
 is classified before extraction and never stored as data; bots built around the
 3am timeout; monitors that watch the value, not the timestamp. **Everything runs**
 — most with a one-command demo, no key or signup.
+
+---
+
+## Security tooling — the guard line
+
+Drop-in Foundry security checks for the surfaces where a wrong contract still passes its
+own tests: Uniswap v4 hooks, ERC-4337/7702 account abstraction, and Superchain interop.
+Each check ships the way I audit — a **correct** reference the check passes, a
+**deliberately-broken** reference the check **catches**, and a falsifiability test proving
+it fails on the bug and only on the bug. Point one at your contract and get a failing
+transaction when the property is violated, not a vague warning. All MIT, Foundry, CI-green.
+
+| Guard | Surface it checks | Checks / tests |
+|---|---|---|
+| [**v4-hookguard**](https://github.com/dngr2/v4-hookguard) | Uniswap v4 hooks: return-delta consistency + bounds, hook-conservation, reentrancy, permission-bitmap lint, scorecard | 8 checks · 27 tests |
+| [**account-abstraction-guard**](https://github.com/dngr2/account-abstraction-guard) | ERC-4337/7702: EntryPoint execute-auth, userOp signature/replay, relayed-exec replay protection, session-key scope, paymaster | 5 checks · 21 tests |
+| [**superchain-interop-guard**](https://github.com/dngr2/superchain-interop-guard) | Superchain/ERC-7802: crosschain mint/burn interface conformance, CREATE2 chain-independent address, bridge auth | 5 checks · 18 tests |
+| [**guard-ci**](https://github.com/dngr2/guard-ci) | GitHub Action + scaffold that wires the guards above into a project's CI — one workflow, `guard-scaffold` drops the checks in, examples for paymaster / AA-account / superchain-ERC20 | reusable action |
+
+The property tests these are built on — [**invariant-kit**](https://github.com/dngr2/invariant-kit)
+and [**v4-hook-invariants**](https://github.com/dngr2/v4-hook-invariants) — are below. You don't
+trust the checker; you run the deliberately-broken reference and watch it fail.
 
 ---
 
