@@ -12,7 +12,8 @@ below), an installable invariant/exploit-check library, security-PoC repos — v
 classes, a written audit, invariant fuzzing, proxy/upgrade takeovers, and Move/Solana
 authorization bugs — and a competitive-audit researcher profile on
 [Sherlock](https://audits.sherlock.xyz/watson/dngr2) and
-[Cantina](https://cantina.xyz/u/dngr2).
+[Cantina](https://cantina.xyz/u/dngr2), where the guard line and the full
+security portfolio are mirrored.
 
 The rest is backend and scraping: a block page returns `200 OK`, so every response
 is classified before extraction and never stored as data; bots built around the
