@@ -22,6 +22,21 @@ is classified before extraction and never stored as data; bots built around the
 
 ---
 
+## The "twenty-plus," with the ones worth naming
+
+- **[RFC 8785 canonicalization](https://github.com/sveinugu/jsoncanon/pull/1)** — JCS libraries serializing floats as `%.15E` instead of the spec's shortest ECMAScript round-trip form. Fixed across jsoncanon, json-canonicalization, and didwebvh-py.
+- **Semver non-transitivity** — `1.0.0-5.4-alpha` ranked below `1.0.0-5.4-alpha.beta`, which ranked below `1.0.0-5.4-alpha.1` — except direct comparison said the first was *greater* than the third. A ranking bug, not a parsing one. Merged in [hashicorp/go-version](https://github.com/hashicorp/go-version/pull/208), semver4j, and composer/semver.
+- **[phpseclib BigInteger](https://github.com/phpseclib/phpseclib/pull/2167)** — the pure-PHP big-int engine returned the divisor itself as the "common residue" instead of 0 on an exact division. One line, a decade-old codepath.
+- **Date/time edge cases** — Cronos' day-of-week range starting at 7 never fired; gronx skipped Sunday on a day-of-month step crossing a short month; go-mysql dropped fractional digits on a zero-fraction `TIME`; PyMySQL's negative-timedelta escaping was wrong.
+- **[json-schema-validator](https://github.com/networknt/json-schema-validator/pull/1273)** — `uniqueItems` compared numbers by node type, so `1` and `1.0` counted as distinct; `idn-hostname` accepted empty labels; `uri-template` rejected a literal apostrophe.
+- **[CBOR canonical ordering](https://github.com/c-rack/cbor-java/pull/265)** — map keys sorted by signed byte value instead of unsigned, silently breaking RFC 8949 canonical ordering on any key with the high bit set.
+
+Mostly found by running the fuzzers and property tests a project already ships
+and following the output to the real assumption that broke, not by searching
+for CVEs.
+
+---
+
 ## Security tooling — the guard line
 
 Drop-in Foundry security checks for the surfaces where a wrong contract still passes its
